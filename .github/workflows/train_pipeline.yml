@@ -1,0 +1,54 @@
+name: ML Training Pipeline
+
+# Trigger workflow on push or PR to main/develop
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Checkout code
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ Setup Python
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      # 3️⃣ Install dependencies
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install joblib scikit-learn numpy pandas
+
+      # 4️⃣ Run training script
+      - name: Run train.py
+        run: |
+          python src/train.py
+
+      # 5️⃣ Upload model artifact
+      - name: Upload model
+        uses: actions/upload-artifact@v3
+        with:
+          name: breast_cancer_model
+          path: models/
+
+      # 6️⃣ Upload metrics JSON
+      - name: Upload metrics
+        uses: actions/upload-artifact@v3
+        with:
+          name: experiment_metrics
+          path: results/
+ 

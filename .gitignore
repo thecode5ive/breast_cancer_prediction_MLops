@@ -1,0 +1,61 @@
+# -----------------------
+# Python cache / compiled files
+# -----------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -----------------------
+# Virtual environments
+# -----------------------
+venv/
+env/
+.venv/
+
+# -----------------------
+# Jupyter Notebook checkpoints
+# -----------------------
+.ipynb_checkpoints/
+
+# -----------------------
+# Dataset files
+# -----------------------
+data/
+*.csv
+*.xlsx
+
+# -----------------------
+# Model / ML output files
+# -----------------------
+*.pkl
+*.h5
+*.joblib
+models/
+
+# -----------------------
+# Logs
+# -----------------------
+logs/
+*.log
+
+# -----------------------
+# Docker temporary / local files
+# -----------------------
+*.tmp
+docker-compose.override.yml
+*.dockerignore
+
+# Keep main Dockerfiles tracked
+dockerfile
+dockerfile.frontend
+
+# -----------------------
+# VS Code settings
+# -----------------------
+.vscode/
+
+# -----------------------
+# OS-specific files
+# -----------------------
+.DS_Store
+Thumbs.db
